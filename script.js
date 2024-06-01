@@ -6,12 +6,27 @@ form.addEventListener("submit", function(event) {
    let inputField = document.getElementById("number");
     let num = inputField.value;
 
-    if ((num < 1) || (num > 3999)) {
+
+    if (num === "") {
         result.style.display = "block";
         result.classList.add("errors");
         result.textContent = "Please enter a valid number";
         return;
-    } 
+    }
+
+    if (num < 1) {
+        result.style.display = "block";
+        result.classList.add("errors");
+        result.textContent = "Please enter a number greater than or equal to 1";
+        return;
+    } else if (num >= 4000) {
+        result.style.display = "block";
+        result.classList.add("errors");
+        result.textContent = "Please enter a number less than or equal to 3999";
+        return;
+    } else {
+        result.classList.remove("errors");
+    }
 
    const romanNumerals = [
     {value: 1000, numeral: "M"},
